@@ -1,0 +1,64 @@
+/* Smooth Scroll behavior handled by JS for better control, but keep base styles */
+html {
+    scroll-padding-top: 100px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Dot Pattern Background */
+.bg-dot-pattern {
+    background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    opacity: 0.6;
+}
+
+/* Glass Card Style */
+.glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.02), 
+      0 2px 4px -1px rgba(0, 0, 0, 0.02),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #cbd5e1; 
+    box-shadow: 
+      0 20px 25px -5px rgba(0, 0, 0, 0.05), 
+      0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    transform: translateY(-2px);
+}
+
+/* Text Balance Utility */
+.text-balance {
+    text-wrap: balance;
+}
+
+/* Skill Tags */
+.skill-tag {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #475569; /* Slate 600 */
+    font-size: 0.8125rem; /* 13px */
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    cursor: default;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.skill-tag:hover {
+    background-color: #ffffff;
+    color: #4f46e5; /* Indigo 600 */
+    border-color: #e0e7ff; /* Indigo 100 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}

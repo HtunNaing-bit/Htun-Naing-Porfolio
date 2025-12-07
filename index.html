@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Htun Naing — Data Scientist Portfolio</title>
+    <meta name="description" content="Portfolio of Htun Naing — Data Scientist. Projects-first, clean minimal design emphasizing data & AI work." />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              ink: '#0f172a', // Slate 900
+              inkLight: '#334155', // Slate 700
+              muted: '#64748b', // Slate 500
+              accent: '#3b82f6', // Blue 500
+              accentHover: '#2563eb', // Blue 600
+              bg: '#ffffff', // Pure White
+            },
+            boxShadow: {
+              'soft': '0 4px 20px -2px rgba(0,0,0,0.05)',
+              'glow': '0 0 15px rgba(59, 130, 246, 0.3)',
+              'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'gradient-x': 'gradient-x 3s ease infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              'gradient-x': {
+                '0%, 100%': {
+                    'background-size':'200% 200%',
+                    'background-position': 'left center'
+                },
+                '50%': {
+                    'background-size':'200% 200%',
+                    'background-position': 'right center'
+                },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "vite": "https://aistudiocdn.com/vite@^7.2.6",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+  }
+}
+</script>
+</head>
+<body class="bg-white text-ink selection:bg-accent/20 selection:text-accentHover relative overflow-x-hidden">
+
+    <!-- Background System -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute inset-0 bg-dot-pattern"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/50"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-white/40 via-transparent to-white/40"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-300">
+        <div id="header-container" class="w-full max-w-[1000px] rounded-2xl px-5 py-3.5 flex justify-between items-center bg-white/60 backdrop-blur-md shadow-sm shadow-black/5 ring-1 ring-white/60 transition-all duration-500">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-900 to-slate-700 text-white shadow-md grid place-items-center font-bold text-sm select-none">
+                    HN
+                </div>
+                <div class="hidden sm:block leading-tight">
+                    <div class="font-bold text-ink text-sm tracking-tight">Htun Naing</div>
+                    <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Data Scientist</div>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-6 text-[14px] font-semibold text-slate-500">
+                <a href="#projects" class="nav-link hover:text-ink transition-colors relative group">
+                    Projects
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-accent origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+                </a>
+                <a href="#skills" class="nav-link hover:text-ink transition-colors relative group">
+                    Skills
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-accent origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+                </a>
+                <a href="#experience" class="nav-link hover:text-ink transition-colors relative group">
+                    Experience
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-accent origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+                </a>
+                <a href="#education" class="nav-link hover:text-ink transition-colors relative group">
+                    Education
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-accent origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+                </a>
+                <a href="#contact" class="nav-link hover:text-ink transition-colors relative group">
+                    Contact
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-accent origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+                </a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="https://docs.google.com/document/d/1pX91Lf7V8wGkqggS0t0IDKXd22DP-FzI3RUeM9XHETE/edit?tab=t.0" target="_blank"
+                    class="px-5 py-2 rounded-xl bg-ink text-white text-xs font-bold shadow-lg shadow-slate-900/10 hover:bg-slate-800 transition-all active:scale-95 block">
+                    Resume
+                </a>
+                <a href="#contact" class="md:hidden p-2 text-ink nav-link" aria-label="Contact">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="w-[90%] max-w-[1200px] mx-auto pt-28 pb-12 relative z-10">
+        
+        <!-- Hero Section -->
+        <main class="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 items-start animate-fade-in" role="main">
+            
+            <!-- Left Column: Featured Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[220px] gap-5 order-2 lg:order-1">
+                
+                <!-- Project 1: Large -->
+                <div class="md:col-span-2 md:row-span-2 group relative glass-card rounded-[2rem] cursor-pointer transition-all duration-500 overflow-hidden animate-fade-in opacity-0 project-card"
+                     style="animation-delay: 0ms;" tabindex="0" data-id="forecasting">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                    <div class="relative h-full p-7 flex flex-col z-10 justify-between">
+                        <div class="flex items-start gap-5">
+                            <div class="transform transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-3">
+                                <!-- ML Icon -->
+                                <div class="w-12 h-12 rounded-2xl bg-blue-50 text-accent flex items-center justify-center shadow-sm ring-1 ring-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+                                </div>
+                            </div>
+                            <div class="pt-1">
+                                <h3 class="font-bold text-2xl text-ink tracking-tight group-hover:text-accent transition-colors">Property Price Forecast</h3>
+                                <p class="text-muted text-[15px] mt-2 leading-relaxed max-w-sm">Time-series forecasting pipeline</p>
+                                <div class="flex gap-2 mt-4">
+                                    <span class="inline-block px-3 py-1 bg-white/50 border border-slate-100 rounded-full text-[11px] font-bold text-slate-500 uppercase tracking-wider backdrop-blur-sm">Python</span>
+                                    <span class="inline-block px-3 py-1 bg-white/50 border border-slate-100 rounded-full text-[11px] font-bold text-slate-500 uppercase tracking-wider backdrop-blur-sm">Scikit-learn</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-4">
+                            <div class="text-sm font-semibold text-emerald-700 bg-emerald-50/80 px-4 py-2 rounded-xl border border-emerald-100/50 shadow-sm backdrop-blur-sm">
+                                📉 RMSE Improved by 12%
+                            </div>
+                            <div class="flex gap-3">
+                                <button onclick="window.open('https://github.com/HtunNaing-bit/forecasting-model', '_blank'); event.stopPropagation();" 
+                                    class="px-5 py-2.5 rounded-xl text-sm font-bold text-slate-500 hover:text-ink hover:bg-slate-50 transition-all border border-transparent hover:border-slate-200">
+                                    Code
+                                </button>
+                                <button class="px-5 py-2.5 rounded-xl bg-ink text-white text-sm font-bold shadow-lg shadow-slate-300/50 hover:bg-accent hover:shadow-accent/30 hover:scale-105 transition-all duration-300">
+                                    Case Study
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Wide -->
+                <div class="md:col-span-2 group relative glass-card rounded-[2rem] cursor-pointer transition-all duration-500 overflow-hidden animate-fade-in opacity-0 project-card"
+                     style="animation-delay: 100ms;" tabindex="0" data-id="dashboard">
+                     <div class="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                     <div class="relative h-full p-7 flex flex-col z-10 justify-center">
+                        <div class="flex items-center gap-6">
+                            <div class="transform transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-3">
+                                <!-- BI Icon -->
+                                <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-500 flex items-center justify-center shadow-sm ring-1 ring-amber-100 group-hover:bg-amber-500 group-hover:text-white transition-colors duration-300">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18" /><path d="M18 17V9" /><path d="M13 17V5" /><path d="M8 17v-3" /></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl text-ink tracking-tight group-hover:text-accent transition-colors">Sales BI Dashboard</h3>
+                                <p class="text-muted text-sm mt-1">Automated KPIs & Inventory visualization</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex gap-3 opacity-60 group-hover:opacity-100 transition-opacity">
+                            <span class="h-1.5 w-16 rounded-full bg-amber-400 shadow-sm"></span>
+                            <span class="h-1.5 w-10 rounded-full bg-slate-200"></span>
+                            <span class="h-1.5 w-24 rounded-full bg-slate-200"></span>
+                        </div>
+                     </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-span-1 group relative glass-card rounded-[2rem] cursor-pointer transition-all duration-500 overflow-hidden animate-fade-in opacity-0 project-card"
+                     style="animation-delay: 200ms;" tabindex="0" data-id="data-quality">
+                     <div class="relative h-full p-7 flex flex-col justify-between z-10">
+                        <div>
+                            <div class="mb-4 transform transition-transform duration-500 group-hover:scale-110 origin-left">
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shadow-sm ring-1 ring-emerald-100 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-ink text-lg leading-tight mb-2 group-hover:text-accent transition-colors">Data Quality Toolkit</h3>
+                            <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Validation scripts for ETL pipelines</p>
+                        </div>
+                        <div class="flex justify-end mt-auto opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                            <div class="flex items-center gap-2 text-xs font-bold text-accent">
+                               Read details
+                               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                       </div>
+                     </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="col-span-1 group relative glass-card rounded-[2rem] cursor-pointer transition-all duration-500 overflow-hidden animate-fade-in opacity-0 project-card"
+                     style="animation-delay: 300ms;" tabindex="0" data-id="etl">
+                     <div class="relative h-full p-7 flex flex-col justify-between z-10">
+                        <div>
+                            <div class="mb-4 transform transition-transform duration-500 group-hover:scale-110 origin-left">
+                                <div class="w-12 h-12 rounded-2xl bg-slate-50 text-slate-600 flex items-center justify-center shadow-sm ring-1 ring-slate-100 group-hover:bg-slate-700 group-hover:text-white transition-colors duration-300">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-ink text-lg leading-tight mb-2 group-hover:text-accent transition-colors">ETL Helpers</h3>
+                            <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Automated backups & simple recovery</p>
+                        </div>
+                        <div class="flex justify-end mt-auto opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                            <div class="flex items-center gap-2 text-xs font-bold text-accent">
+                               Read details
+                               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                       </div>
+                     </div>
+                </div>
+
+                 <!-- Project 5 -->
+                 <div class="col-span-1 group relative glass-card rounded-[2rem] cursor-pointer transition-all duration-500 overflow-hidden animate-fade-in opacity-0 project-card"
+                    style="animation-delay: 400ms;" tabindex="0" data-id="pricing">
+                    <div class="relative h-full p-7 flex flex-col justify-between z-10">
+                    <div>
+                        <div class="mb-4 transform transition-transform duration-500 group-hover:scale-110 origin-left">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm ring-1 ring-indigo-100 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-ink text-lg leading-tight mb-2 group-hover:text-accent transition-colors">Pricing Analysis</h3>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Statistical analysis & segmentation</p>
+                    </div>
+                    <div class="flex justify-end mt-auto opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                        <div class="flex items-center gap-2 text-xs font-bold text-accent">
+                           Read details
+                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                   </div>
+                    </div>
+                 </div>
+
+                 <!-- Project 6 -->
+                 <div class="col-span-1 group relative glass-card rounded-[2rem] cursor-pointer transition-all duration-500 overflow-hidden animate-fade-in opacity-0 project-card"
+                    style="animation-delay: 500ms;" tabindex="0" data-id="dashboard-2">
+                    <div class="relative h-full p-7 flex flex-col justify-between z-10">
+                    <div>
+                        <div class="mb-4 transform transition-transform duration-500 group-hover:scale-110 origin-left">
+                            <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-500 flex items-center justify-center shadow-sm ring-1 ring-rose-100 group-hover:bg-rose-500 group-hover:text-white transition-colors duration-300">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-ink text-lg leading-tight mb-2 group-hover:text-accent transition-colors">Inventory Heatmap</h3>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Geospatial inventory insights</p>
+                    </div>
+                    <div class="flex justify-end mt-auto opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                        <div class="flex items-center gap-2 text-xs font-bold text-accent">
+                           Read details
+                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                   </div>
+                    </div>
+                 </div>
+            </div>
+
+            <!-- Right Column: Bio/Stats -->
+            <aside class="order-1 lg:order-2 lg:sticky lg:top-28 space-y-8">
+                <div class="p-8 rounded-[2rem] glass-card relative overflow-hidden flex flex-col transition-transform hover:scale-[1.01] duration-500 ring-1 ring-white/50">
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="mb-8">
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-5 text-[11px] uppercase font-bold tracking-widest text-emerald-700 bg-emerald-50/80 rounded-full border border-emerald-100/50 w-fit shadow-sm backdrop-blur-md">
+                                <span class="relative flex h-2 w-2">
+                                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                </span>
+                                Available for work
+                            </div>
+                            <h1 class="text-4xl lg:text-[42px] font-black text-ink tracking-tight leading-[1.1] text-balance">
+                                Design-forward<br/>
+                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 animate-gradient-x">Data Scientist</span>
+                            </h1>
+                        </div>
+            
+                        <p class="text-slate-600 font-medium text-[16px] leading-relaxed mb-10 pl-1">
+                          I transform complex data into clear, actionable insights—automating workflows and optimizing strategies for real business impact.
+                        </p>
+            
+                        <!-- Stats -->
+                        <div class="flex justify-between items-center mb-10 px-2">
+                           <div class="text-center">
+                             <span class="block text-3xl font-black text-ink tracking-tighter">1.5y+</span>
+                             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1 block">Experience</span>
+                           </div>
+                           <div class="w-px h-12 bg-slate-200/80"></div>
+                           <div class="text-center">
+                             <span class="block text-3xl font-black text-ink tracking-tighter">8</span>
+                             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1 block">Projects</span>
+                           </div>
+                           <div class="w-px h-12 bg-slate-200/80"></div>
+                           <div class="text-center">
+                             <span class="block text-3xl font-black text-ink tracking-tighter">4</span>
+                             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1 block">Certs</span>
+                           </div>
+                        </div>
+            
+                        <div class="flex gap-4 mt-auto">
+                          <a href="https://github.com/HtunNaing-bit" target="_blank" rel="noopener noreferrer"
+                            class="flex-1 flex justify-center items-center gap-2 px-4 py-3.5 rounded-2xl bg-ink text-white font-bold text-sm shadow-xl shadow-slate-900/10 hover:bg-slate-800 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
+                            <svg class="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            GitHub
+                          </a>
+                          <a href="#contact" class="nav-link flex-1 flex justify-center items-center px-4 py-3.5 rounded-2xl bg-white/50 border border-white text-ink font-bold text-sm hover:bg-white hover:border-slate-200 transition-all shadow-sm hover:shadow-md backdrop-blur-sm">
+                            Contact
+                          </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Impact -->
+                <div class="px-6 py-6 rounded-[2rem] glass-card shadow-sm border-t border-white ring-1 ring-slate-900/5">
+                    <div class="flex items-center gap-3 mb-4">
+                       <div class="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center shadow-inner">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                       </div>
+                       <span class="font-bold text-xs text-indigo-600 uppercase tracking-widest">Recent Impact</span>
+                    </div>
+                    <ul class="space-y-4">
+                       <li class="flex gap-3 text-sm text-slate-600 items-start">
+                         <div class="mt-2 w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
+                         <span>Saved <strong class="text-ink font-bold">14 hrs/week</strong> via dashboard automation</span>
+                       </li>
+                       <li class="flex gap-3 text-sm text-slate-600 items-start">
+                         <div class="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0 shadow-[0_0_8px_rgba(99,102,241,0.5)]"></div>
+                         <span>Improved pricing accuracy using time-series features</span>
+                       </li>
+                    </ul>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mt-24 scroll-mt-32">
+            <div class="flex items-center gap-6 mb-12">
+                <h2 class="text-3xl font-black text-ink tracking-tight">Technical Skills</h2>
+                <div class="h-px bg-slate-200/60 flex-1"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Languages -->
+                <div class="p-6 rounded-[2rem] glass-card hover:border-slate-300 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-white shadow-sm text-accent ring-1 ring-slate-100 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 group-hover:text-indigo-600 group-hover:shadow-md">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+                        </div>
+                        <h3 class="font-bold text-ink text-[16px] leading-tight">Languages</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">Bash/Shell</span>
+                    </div>
+                </div>
+
+                 <!-- ML & Libraries -->
+                 <div class="p-6 rounded-[2rem] glass-card hover:border-slate-300 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-white shadow-sm text-accent ring-1 ring-slate-100 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 group-hover:text-indigo-600 group-hover:shadow-md">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
+                        </div>
+                        <h3 class="font-bold text-ink text-[16px] leading-tight">ML & Libraries</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">FastAPI</span>
+                    </div>
+                </div>
+
+                 <!-- Tools -->
+                 <div class="p-6 rounded-[2rem] glass-card hover:border-slate-300 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-white shadow-sm text-accent ring-1 ring-slate-100 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 group-hover:text-indigo-600 group-hover:shadow-md">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        </div>
+                        <h3 class="font-bold text-ink text-[16px] leading-tight">Tools & DevOps</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Jupyter</span>
+                    </div>
+                </div>
+
+                 <!-- Concepts -->
+                 <div class="p-6 rounded-[2rem] glass-card hover:border-slate-300 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-white shadow-sm text-accent ring-1 ring-slate-100 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 group-hover:text-indigo-600 group-hover:shadow-md">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+                        </div>
+                        <h3 class="font-bold text-ink text-[16px] leading-tight">Core Competencies</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="skill-tag">Cleaning</span>
+                        <span class="skill-tag">Feature Eng.</span>
+                        <span class="skill-tag">Forecasting</span>
+                        <span class="skill-tag">A/B Testing</span>
+                        <span class="skill-tag">Visualization</span>
+                        <span class="skill-tag">ETL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects List Section (Duplicates Hero Content but in Grid) -->
+        <section id="projects-list" class="mt-24 scroll-mt-32">
+             <!-- Note: Since we have the Hero Grid, this section can be used for "All Other Projects" or just keeping the anchor for navigation. 
+                  The layout provided earlier had a "Secondary List". I'll skip duplicating content if not strictly needed, 
+                  but I'll add the anchor above the Hero grid or here.
+                  Actually, the nav links to #projects which is the Hero grid area. 
+                  If you want a separate list, we can add it, but the Hero grid already lists all 6. 
+                  I will just ensure the 'Projects' nav link points to the Hero area.
+             -->
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="mt-24 scroll-mt-32">
+            <div class="flex items-center gap-6 mb-12">
+                <h2 class="text-3xl font-black text-ink tracking-tight">Experience</h2>
+                <div class="h-px bg-slate-200/60 flex-1"></div>
+            </div>
+            
+            <div class="relative space-y-12 pl-4">
+                <div class="absolute top-6 bottom-6 left-[11px] w-[2px] bg-slate-200">
+                    <div class="h-full w-full bg-gradient-to-b from-indigo-500 via-purple-500 to-transparent opacity-40"></div>
+                </div>
+
+                <!-- Job 1 -->
+                <div class="relative pl-12 group">
+                    <div class="absolute left-0 top-3 w-6 h-6 rounded-full border-[4px] border-white bg-slate-200 group-hover:bg-indigo-500 group-hover:scale-110 transition-all duration-300 shadow-md z-10">
+                       <div class="absolute inset-0 bg-indigo-500 rounded-full opacity-0 group-hover:animate-ping"></div>
+                    </div>
+                    <div class="glass-card p-8 rounded-[2rem] transition-all duration-300 hover:shadow-glass hover:bg-white/85 group-hover:-translate-y-1">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-2 mb-4">
+                            <h3 class="font-bold text-xl text-ink tracking-tight">Data Analyst</h3>
+                            <span class="text-xs font-bold text-indigo-600 bg-indigo-50/80 border border-indigo-100 px-3 py-1 rounded-full uppercase tracking-wide">Richhouse Premium Estate</span>
+                        </div>
+                        <div class="text-sm font-semibold text-slate-400 mb-5 flex items-center gap-1.5">
+                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                             Bangkok
+                        </div>
+                        <p class="text-[16px] font-medium text-slate-600 leading-relaxed max-w-4xl">
+                            Spearheaded data-driven pricing strategies by engineering complex SQL queries and performing statistical analysis. Developed interactive dashboards to visualize market trends, directly influencing executive decision-making and optimizing revenue.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative pl-12 group">
+                    <div class="absolute left-0 top-3 w-6 h-6 rounded-full border-[4px] border-white bg-slate-200 group-hover:bg-indigo-500 group-hover:scale-110 transition-all duration-300 shadow-md z-10">
+                       <div class="absolute inset-0 bg-indigo-500 rounded-full opacity-0 group-hover:animate-ping"></div>
+                    </div>
+                    <div class="glass-card p-8 rounded-[2rem] transition-all duration-300 hover:shadow-glass hover:bg-white/85 group-hover:-translate-y-1">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-2 mb-4">
+                            <h3 class="font-bold text-xl text-ink tracking-tight">Database Assistant</h3>
+                            <span class="text-xs font-bold text-indigo-600 bg-indigo-50/80 border border-indigo-100 px-3 py-1 rounded-full uppercase tracking-wide">Pronto Realty</span>
+                        </div>
+                        <div class="text-sm font-semibold text-slate-400 mb-5 flex items-center gap-1.5">
+                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                             Yangon
+                        </div>
+                        <p class="text-[16px] font-medium text-slate-600 leading-relaxed max-w-4xl">
+                            Ensured high-fidelity data integrity by designing and implementing rigorous validation protocols. Supported critical ETL processes using SQL, optimizing data flow for downstream reporting and analytics.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="mt-24 scroll-mt-32">
+            <div class="flex items-center gap-6 mb-12">
+                <h2 class="text-3xl font-black text-ink tracking-tight">Education & Certs</h2>
+                <div class="h-px bg-slate-200/60 flex-1"></div>
+            </div>
+      
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Cert 1 -->
+                <div class="group glass-card p-8 rounded-[2rem] transition-all duration-300 hover:shadow-glass hover:-translate-y-1 relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 opacity-[0.03] text-ink transform rotate-12 group-hover:scale-110 transition-transform duration-500 pointer-events-none">
+                        <svg width="120" height="120" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="mb-4">
+                            <span class="inline-block px-3 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wider mb-3 bg-indigo-50 text-indigo-600 border border-indigo-100">Degree</span>
+                            <h3 class="text-xl font-bold text-ink leading-tight">Pearson BTEC Level 5 HND Diploma in Computer Science</h3>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-500 mb-4">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M17 21v-8.87a4 4 0 0 0-3.3-3.88c-1.55-.27-2.9 1-2.9 2.75V21"/><path d="M19 10v6"/><path d="M5 10v6"/></svg>
+                            Gusto University
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed">Specialized in core computing principles, including software development, systems analysis, and programming logic.</p>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="group glass-card p-8 rounded-[2rem] transition-all duration-300 hover:shadow-glass hover:-translate-y-1 relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 opacity-[0.03] text-ink transform rotate-12 group-hover:scale-110 transition-transform duration-500 pointer-events-none">
+                        <svg width="120" height="120" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="mb-4">
+                            <span class="inline-block px-3 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wider mb-3 bg-amber-50 text-amber-600 border border-amber-100">Certification</span>
+                            <h3 class="text-xl font-bold text-ink leading-tight">IBM Data Science Professional Certificate</h3>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-500 mb-4">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M17 21v-8.87a4 4 0 0 0-3.3-3.88c-1.55-.27-2.9 1-2.9 2.75V21"/><path d="M19 10v6"/><path d="M5 10v6"/></svg>
+                            IBM
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed">Statistical Analysis, Machine Learning Algorithms, Python (Pandas, NumPy, Scikit-learn), Data Visualization (Matplotlib, Seaborn), and Model Evaluation Techniques.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mt-24 mb-16 scroll-mt-32">
+            <div class="glass-card rounded-[2.5rem] p-8 md:p-14 shadow-lg transition-all duration-300 hover:shadow-xl relative overflow-hidden text-center md:text-left isolate bg-white/70">
+                <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-black text-ink mb-4 tracking-tight">Ready to collaborate?</h2>
+                        <p class="text-slate-600 font-medium text-lg max-w-lg leading-relaxed text-balance">
+                            Open for data science opportunities and freelance projects. Let's build something intelligent.
+                        </p>
+                        <div class="mt-10 flex flex-col md:flex-row items-center gap-5">
+                            <a href="mailto:htunnaing.personal@outlook.com" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-ink text-white font-bold hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/10 hover:scale-105 duration-200 hover:-translate-y-1">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                                Send an Email
+                            </a>
+                            <div class="text-slate-500 text-sm font-medium">or call <span class="text-ink font-bold ml-1">(+66) 6-4763-6114</span></div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200/60 shadow-inner max-w-sm w-full">
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Connect elsewhere</div>
+                        <div class="space-y-4">
+                            <a href="https://github.com/HtunNaing-bit" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-slate-700 hover:text-accent transition-colors group">
+                                <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 grid place-items-center group-hover:border-blue-200 group-hover:shadow-sm transition-all">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </div>
+                                <span class="font-bold text-lg">HtunNaing-bit</span>
+                            </a>
+                            <a href="https://docs.google.com/document/d/1pX91Lf7V8wGkqggS0t0IDKXd22DP-FzI3RUeM9XHETE/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-slate-700 hover:text-accent transition-colors group">
+                                <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 grid place-items-center group-hover:border-blue-200 group-hover:shadow-sm transition-all">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                </div>
+                                <span class="font-bold text-lg">Resume Doc</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-10 text-center text-sm font-semibold text-muted/60">
+            © 2025 Htun Naing — Data Scientist • AI Enthusiast
+        </footer>
+    </div>
+
+    <!-- Modal Container -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-slate-900/60 z-[60] flex items-center justify-center p-6 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" aria-modal="true" role="dialog">
+        <div id="modal-content" class="w-full max-w-3xl bg-white rounded-xl shadow-2xl p-6 md:p-8 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+            <div class="flex justify-between items-start mb-6">
+                <h2 id="modal-title" class="text-2xl font-bold text-ink">Project Title</h2>
+                <button id="modal-close" class="text-muted hover:text-ink transition-colors p-1" aria-label="Close modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div id="modal-body" class="text-ink leading-relaxed">
+                <!-- Dynamic Content Here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
